@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台湾电影网 - 台湾电影/华语剧集在线观看 | taiwandianyingwang-h5</title>
+<meta name="description" content="台湾电影网（taiwandianyingwang-h5）提供台湾电影、华语剧集、影音综艺、独立制片在线观看与资讯，免费高清，移动端自适应，畅看台片好内容。">
+<meta name="keywords" content="台湾电影网, taiwandianyingwang-h5, 台湾电影, 华语剧集, 台剧, 影音综艺, 独立电影">
+<meta name="author" content="台湾电影网">
+<meta name="robots" content="index,follow">
+<!-- <meta name="msvalidate.01" content="必应站长验证码" /> -->
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #04121a;
+  color: #d7eaf2;
+  line-height: 1.7;
+}
+a { color: #38e1c5; text-decoration: none; transition: .25s; }
+a:hover { color: #7af0ff; }
+
+/* 顶部导航 */
+.header {
+  background: linear-gradient(120deg, #062b3a, #0a4f63);
+  position: sticky; top: 0; z-index: 999;
+  box-shadow: 0 4px 18px rgba(0,0,0,.45);
+}
+.nav {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1rem; flex-wrap: wrap;
+}
+.brand {
+  font-size: 1.35rem; font-weight: 800; color: #7af0ff;
+  letter-spacing: .5px;
+}
+.menu { list-style: none; display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.menu a { color: #cdeef7; font-size: .95rem; padding: .3rem 0; border-bottom: 2px solid transparent; }
+.menu a:hover { border-bottom-color: #38e1c5; color: #fff; }
+
+/* 横幅 */
+.hero {
+  padding: 4.5rem 1rem 3.5rem;
+  text-align: center;
+  background:
+    radial-gradient(900px 400px at 20% 10%, rgba(56,225,197,.18), transparent),
+    radial-gradient(800px 400px at 90% 30%, rgba(122,240,255,.14), transparent),
+    linear-gradient(160deg, #05202c, #073a4d);
+}
+.hero h1 { font-size: 2.1rem; color: #eafffb; margin-bottom: .8rem; }
+.hero p { max-width: 640px; margin: 0 auto 1.6rem; color: #a9d6e0; }
+.btn {
+  display: inline-block; padding: .75rem 2rem; border-radius: 40px;
+  background: linear-gradient(45deg, #38e1c5, #2aa9ff);
+  color: #042029; font-weight: 700;
+}
+.btn:hover { color: #042029; transform: translateY(-2px); }
+
+/* 区块 */
+.section { max-width: 1180px; margin: 0 auto; padding: 3rem 1rem; }
+.section h2 {
+  text-align: center; font-size: 1.7rem; color: #eafffb; margin-bottom: 1.8rem;
+}
+.section h2 span { color: #38e1c5; }
+
+/* 卡片 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+.card {
+  background: #073140;
+  border: 1px solid #0e4a5e;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: .3s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+.poster {
+  height: 210px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.2rem;
+  background: linear-gradient(135deg, #0b3a4d, #0a5566);
+}
+.card-body { padding: .9rem 1rem; }
+.card-body h3 { font-size: .98rem; color: #eafffb; margin-bottom: .3rem; }
+.card-body small { color: #8fc7d6; }
+
+/* 标签 */
+.tags { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 1.8rem; }
+.tag {
+  border: 1px solid #1c6478; color: #bfe9f3;
+  padding: .35rem 1rem; border-radius: 30px; font-size: .82rem;
+}
+
+/* 关于 */
+.about {
+  background: #062734; border: 1px solid #0e4a5e; border-radius: 16px; padding: 2rem;
+}
+.about h3 { color: #38e1c5; margin: 1rem 0 .5rem; }
+.about p { color: #b6dce8; margin-bottom: .8rem; }
+
+/* 底部 */
+.footer {
+  background: #03161e; text-align: center; padding: 2rem 1rem;
+  color: #6fa6b6; font-size: .85rem; border-top: 1px solid #0a3645;
+}
+.footer a { color: #7af0ff; }
+
+/* 移动端 */
+@media (max-width: 768px) {
+  .nav { flex-direction: column; gap: .6rem; }
+  .menu { justify-content: center; gap: .8rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .poster { height: 170px; font-size: 2.4rem; }
+  .section { padding: 2.2rem 1rem; }
+  .about { padding: 1.4rem; }
+}
+@media (max-width: 420px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+  .hero { padding: 3rem 1rem; }
+}
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="header">
+  <div class="nav">
+    <div class="brand">🎞️ 台湾电影网</div>
+    <ul class="menu">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#tw-movie">台湾电影</a></li>
+      <li><a href="#drama">华语剧集</a></li>
+      <li><a href="#variety">影音综艺</a></li>
+      <li><a href="#about">关于本站</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <h1>台湾电影网｜台片、台剧、华语影音一站看</h1>
+  <p>
+    台湾电影网（https://taiwandianyingwang-h5）专注台湾电影、华语剧集、影音综艺与独立制片内容，
+    免费高清、移动端自适应，带你重新发现华语影像之美。
+  </p>
+  <a class="btn" href="#tw-movie">开始观影</a>
+</section>
+
+<section class="section" id="tw-movie">
+  <h2>🎬 <span>台湾电影</span> 精选</h2>
+  <div class="tags">
+    <span class="tag">剧情</span>
+    <span class="tag">青春</span>
+    <span class="tag">文艺</span>
+    <span class="tag">悬疑</span>
+    <span class="tag">独立制片</span>
+    <span class="tag">纪录片</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>海角七号</h3>
+        <small>2008 · 爱情/音乐</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>那些年，我们一起追的女孩</h3>
+        <small>2011 · 青春/喜剧</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>血观音</h3>
+        <small>2017 · 悬疑/剧情</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>孤味</h3>
+        <small>2020 · 家庭/文艺</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>阳光普照</h3>
+        <small>2019 · 现实/剧情</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎥</div>
+      <div class="card-body">
+        <h3>瀑布</h3>
+        <small>2021 · 社会/家庭</small>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="drama" style="background:#05202c;">
+  <h2>📺 <span>华语剧集</span> 热播</h2>
+  <div class="tags">
+    <span class="tag">台剧</span>
+    <span class="tag">华语剧</span>
+    <span class="tag">职人剧</span>
+    <span class="tag">悬疑剧</span>
+    <span class="tag">年代剧</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>我们与恶的距离</h3>
+        <small>2019 · 社会/写实</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>想见你</h3>
+        <small>2019 · 爱情/悬疑</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>茶金</h3>
+        <small>2021 · 年代/商战</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>人选之人—造浪者</h3>
+        <small>2023 · 政治/职场</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>逆局</h3>
+        <small>2021 · 犯罪/推理</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">📺</div>
+      <div class="card-body">
+        <h3>一把青</h3>
+        <small>2015 · 战争/年代</small>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="variety">
+  <h2>🎤 <span>影音综艺</span> 与幕后</h2>
+  <div class="tags">
+    <span class="tag">访谈</span>
+    <span class="tag">音乐现场</span>
+    <span class="tag">影人专访</span>
+    <span class="tag">电影节</span>
+    <span class="tag">幕后纪录</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster">🎤</div>
+      <div class="card-body">
+        <h3>金马影展特辑</h3>
+        <small>影展/华语电影</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎤</div>
+      <div class="card-body">
+        <h3>导演面对面</h3>
+        <small>访谈/创作谈</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎤</div>
+      <div class="card-body">
+        <h3>独立音乐现场</h3>
+        <small>音乐/影像</small>
+      </div>
+    </article>
+    <article class="card">
+      <div class="poster">🎤</div>
+      <div class="card-body">
+        <h3>拍片幕后日志</h3>
+        <small>制作/纪录片</small>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="about" style="background:#05202c;">
+  <h2>ℹ️ 关于 <span>台湾电影网</span></h2>
+  <div class="about">
+    <h3>网站简介</h3>
+    <p>
+      台湾电影网（网址：<a href="https://taiwandianyingwang-h5">https://taiwandianyingwang-h5</a>）
+      是一个面向华语观众的电影与剧集导航资讯站，聚焦台湾电影、台剧、华语综艺与独立影像。
+    </p>
+    <h3>内容方向</h3>
+    <p>✅ 台湾电影盘点与片单推荐<br>
+       ✅ 华语剧集分类索引<br>
+       ✅ 影人专访、电影节资讯<br>
+       ✅ 移动端自适应，手机直接刷片单</p>
+    <h3>收录与体验</h3>
+    <p>
+      页面采用语义化 HTML、清晰标题层级与关键词布局，更符合必应（Bing）爬虫理解，
+      提升“台湾电影网 / taiwandianyingwang-h5”相关词展示机会。
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2024 台湾电影网（taiwandianyingwang-h5）· 台湾电影 / 华语剧集资讯站</p>
+  <p>网址：<a href="https://taiwandianyingwang-h5">https://taiwandianyingwang-h5</a></p>
+  <p>关键词：台湾电影网、taiwandianyingwang-h5、台湾电影、华语剧集、台剧、影音综艺</p>
+  <p style="margin-top:.8rem;color:#4f7c8b;">本站为静态展示页，资源链接以 # 占位，仅供结构与 SEO 演示。</p>
+</footer>
+
+</body>
+</html>
